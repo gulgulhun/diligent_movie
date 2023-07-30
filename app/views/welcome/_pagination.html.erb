@@ -1,0 +1,9 @@
+<div class="container">
+  <%= form_tag "/search", :method => "get", id: "search-form/pagination", class: "pagination" do %>
+    <%= hidden_field_tag :search, params[:search] %>
+    <%= link_to "<", root_path(search: params[:search], page: @page - 1), class: "button pagination-button" if @page != '1' %>
+    <%= text_field_tag :page, @page, class: "pagination-input" %> /<%= @total_pages %>
+    <%= submit_tag "ok", class: "button pagination-button" %>
+    <%= link_to ">", root_path(search: params[:search], page: @page + 1), class: "button pagination-button" if @page < @total_pages %>
+  <% end %>
+</div>

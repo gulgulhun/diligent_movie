@@ -1,0 +1,31 @@
+<div class="container">
+  <%= form_tag "/search", :method => "get", id: "search-form", class: "search" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Movie Title", class: "search-input" %>
+    <%= submit_tag "Search", class: "button search-button" %>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="notification">
+    <div class=<%= flash[:notice] ? "notice" : "alert" %>>
+      <%= flash.notice || flash.alert %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2><%= "#{params[:search]} - page #{params[:page] || 1}" if params[:search] %></h2>
+  <div class="movie__grid">
+    <% if @movies.blank? %>
+      There isn't any movie with this query.
+    <% else %>
+      <% @movies.each do |movie| %>
+        <%= render partial: 'movie', locals: { movie: movie } %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<% if @total_pages && @total_pages > 1 %>
+  <%= render partial: 'pagination' %>
+<% end %>
