@@ -1,7 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-
-two:
-  title: MyString
+<% 20.times do |n| %>
+movie_<%= n %>:
+  tmdb_id: <%= n %>
+  title: <%= "Movie#{n}" %>
+  release_date: 2002-02-02
+  score: 6.9
+  img_path: nil
+  search_queries: one
+<% end %>

@@ -9,7 +9,7 @@ You need to create the `local_env.yml` from the sample, use your own TMDB API Re
 
 To start the server just run `rails s` in the root folder.
 
-Sadly there is no tests yet.
+Added some basic Minitest tests. You can run those simply with `rails t` (after you migrated the test db with `rails db:migrate RAILS_ENV=test`).
 
 # Description:
 The task is to create a UI (be it either a pure rails view rendered from the backend, or any frontend rendered page) which has an input box and a search button.
